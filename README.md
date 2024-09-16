@@ -79,12 +79,21 @@ Stop and remove the containers
 ```shell
 $ docker compose down
 ```
-API Endpoints
-1. Get All Running Statistics
-Endpoint: GET /running-statistics
-Response: Returns a JSON array of all running statistics.
-Example:
-json
+Certainly! Below is the Git documentation for your `main.go` file, formatted using Markdown. This documentation includes sections about setup, running the application, API endpoints, and database setup.
+
+```markdown
+# Running Statistics API
+
+This repository contains a Go application that manages running statistics using a PostgreSQL database. It provides a RESTful API for storing, retrieving, and deleting running statistics.
+## API Endpoints
+
+### 1. Get All Running Statistics
+
+- **Endpoint**: `GET /running-statistics`
+- **Response**: Returns a JSON array of all running statistics.
+  
+#### Example:
+```json
 {
   "statistics": [
     {
@@ -96,27 +105,37 @@ json
     }
   ]
 }
-2. Create Running Statistics
-Endpoint: POST /running-statistics
-Request Body: JSON object containing the running statistic data.
-Example:
-json
+```
+
+### 2. Create Running Statistics
+
+- **Endpoint**: `POST /running-statistics`
+- **Request Body**: JSON object containing the running statistic data.
+  
+#### Example:
+```json
 {
   "date": "2021-12-01",
   "distance": "5km",
   "time": "00:30:00"
 }
-Response: Returns the ID of the created statistic.
-Response Example:
-json
+```
+- **Response**: Returns the ID of the created statistic.
+  
+#### Response Example:
+```json
 {
   "id": 2
 }
-3. Get a Specific Running Statistic
-Endpoint: GET /running-statistics/{id}
-Response: Returns the running statistic with the specified ID.
-Example:
-json
+```
+
+### 3. Get a Specific Running Statistic
+
+- **Endpoint**: `GET /running-statistics/{id}`
+- **Response**: Returns the running statistic with the specified ID.
+
+#### Example:
+```json
 {
   "id": 1,
   "date": "2021-12-01",
@@ -124,13 +143,18 @@ json
   "time": "00:30:00",
   "created_at": "2021-12-01T12:00:00Z"
 }
-4. Delete a Running Statistic
-Endpoint: DELETE /running-statistics/{id}
-Response: Returns a 204 No Content status if the deletion is successful or a 404 Not Found status if no statistic with the given ID exists.
-Database Structure
-The application uses a PostgreSQL database with a table named running_statistics. The table structure is as follows:
+```
 
-sql
+### 4. Delete a Running Statistic
+
+- **Endpoint**: `DELETE /running-statistics/{id}`
+- **Response**: Returns a `204 No Content` status if the deletion is successful or a `404 Not Found` status if no statistic with the given ID exists.
+
+## Database Structure
+
+The application uses a PostgreSQL database with a table named `running_statistics`. The table structure is as follows:
+
+```sql
 CREATE TABLE running_statistics (
     id SERIAL PRIMARY KEY,
     date VARCHAR(10),
@@ -138,17 +162,29 @@ CREATE TABLE running_statistics (
     time VARCHAR(10),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-Error Handling
-The API returns appropriate HTTP status codes for different error scenarios:
+```
 
-400 Bad Request for client-side errors (e.g., invalid input).
-404 Not Found when the requested resource does not exist.
-500 Internal Server Error for server-side issues.
-Logging
+## Error Handling
+
+The API returns appropriate HTTP status codes for different error scenarios:
+- `400 Bad Request` for client-side errors (e.g., invalid input).
+- `404 Not Found` when the requested resource does not exist.
+- `500 Internal Server Error` for server-side issues.
+
+## Logging
+
 The application logs incoming HTTP requests to the standard output using the Gorilla Handlers package.
 
-Contributing
+## Contributing
+
 If you would like to contribute to this project, please fork the repository, create a new branch, and submit a pull request.
 
-License
+## License
+
 This project is licensed under the MIT License. See the LICENSE file for more details.
+```
+
+### Notes:
+
+- Be sure to replace `<repository-url>` and `<repository-directory>` with actual values to fit your repository.
+- Update the `docker-compose.yml` based on your specific requirements for the database configuration.
